@@ -1,0 +1,119 @@
+﻿@model IEnumerable<ModuloPessoa.Pessoa>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EntidadeDeNegocio.EntidadeDeNegocioID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Senha.SenhaHash)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoPessoa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstiloNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrimeiroNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeDoMeio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UltimoNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sufixo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailPromocional)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InfoContatoAdicional)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Demografia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rowguid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataModificacao)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntidadeDeNegocio.EntidadeDeNegocioID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Senha.SenhaHash)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoPessoa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstiloNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimeiroNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeDoMeio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UltimoNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sufixo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailPromocional)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InfoContatoAdicional)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Demografia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rowguid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataModificacao)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.EntidadeDeNegocioID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.EntidadeDeNegocioID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.EntidadeDeNegocioID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

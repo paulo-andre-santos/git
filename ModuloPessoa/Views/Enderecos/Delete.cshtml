@@ -1,0 +1,96 @@
+﻿@model ModuloPessoa.Endereco
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Endereco</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.EstadoProvincia.CodigoEstadoProvincia)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EstadoProvincia.CodigoEstadoProvincia)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Endereco1)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Endereco1)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Endereco2)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Endereco2)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Cidade)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Cidade)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CodigoPostal)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CodigoPostal)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LocalEspacial)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LocalEspacial)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.rowguid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.rowguid)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DataModificacao)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DataModificacao)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

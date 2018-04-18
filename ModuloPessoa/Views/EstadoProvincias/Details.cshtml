@@ -1,0 +1,74 @@
+﻿@model ModuloPessoa.EstadoProvincia
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>EstadoProvincia</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Regiao.Nome)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Regiao.Nome)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CodigoEstadoProvincia)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CodigoEstadoProvincia)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SomenteEstadoProvinciaFlag)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SomenteEstadoProvinciaFlag)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.rowguid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.rowguid)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DataModificacao)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DataModificacao)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.EstadoProvinciaID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
