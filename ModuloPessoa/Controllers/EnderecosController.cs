@@ -18,7 +18,7 @@ namespace ModuloPessoa.Controllers
 
         // GET: Enderecos
         public ActionResult Index()
-        {            
+        {
             return View(dao.Listar);
         }
 
@@ -49,7 +49,7 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EnderecoID,Endereco1,Endereco2,Cidade,EstadoProvinciaID,CodigoPostal,LocalEspacial,rowguid,DataModificacao")] Endereco endereco)
+        public ActionResult Create([Bind(Include = "EnderecoID,Endereco1,Endereco2,Cidade,EstadoProvinciaID,CodigoPostal")] Endereco endereco)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EnderecoID,Endereco1,Endereco2,Cidade,EstadoProvinciaID,CodigoPostal,LocalEspacial,rowguid,DataModificacao")] Endereco endereco)
+        public ActionResult Edit([Bind(Include = "EnderecoID,Endereco1,Endereco2,Cidade,EstadoProvinciaID,CodigoPostal")] Endereco endereco)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +114,7 @@ namespace ModuloPessoa.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Endereco endereco = dao.Buscar(id);
-            bool valido = dao.Deletar(endereco);
+            dao.Deletar(endereco);
             return RedirectToAction("Index");
         }
 

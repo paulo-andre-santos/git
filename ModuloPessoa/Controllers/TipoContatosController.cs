@@ -48,7 +48,7 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TipoContato1,Nome,DataModificacao")] TipoContato tipoContato)
+        public ActionResult Create([Bind(Include = "TipoContato1,Nome")] TipoContato tipoContato)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TipoContato1,Nome,DataModificacao")] TipoContato tipoContato)
+        public ActionResult Edit([Bind(Include = "TipoContato1,Nome")] TipoContato tipoContato)
         {
             if (ModelState.IsValid)
             {

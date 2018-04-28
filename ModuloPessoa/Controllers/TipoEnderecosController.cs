@@ -48,12 +48,10 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Nome,DataModificacao")] TipoEndereco tipoEndereco)
+        public ActionResult Create([Bind(Include = "TipoEnderecoID,Nome")] TipoEndereco tipoEndereco)
         {
             if (ModelState.IsValid)
             {
-                //db.TipoEndereco.Add(tipoEndereco);
-                //db.SaveChanges();
                 bool valido = dao.Criar(tipoEndereco);
                 return RedirectToAction("Index");
             }
@@ -68,7 +66,7 @@ namespace ModuloPessoa.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TipoEndereco tipoEndereco = dao.Buscar(id); 
+            TipoEndereco tipoEndereco = dao.Buscar(id);
             if (tipoEndereco == null)
             {
                 return HttpNotFound();
@@ -81,12 +79,10 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Nome,DataModificacao")] TipoEndereco tipoEndereco)
+        public ActionResult Edit([Bind(Include = "TipoEnderecoID,Nome,rowguid,DataModificacao")] TipoEndereco tipoEndereco)
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(tipoEndereco).State = EntityState.Modified;
-                //db.SaveChanges();
                 bool valido = dao.Editar(tipoEndereco);
                 return RedirectToAction("Index");
             }
@@ -115,8 +111,6 @@ namespace ModuloPessoa.Controllers
         {
             TipoEndereco tipoEndereco = dao.Buscar(id);
             bool valido = dao.Deletar(tipoEndereco);
-            //db.TipoEndereco.Remove(tipoEndereco);
-            //db.SaveChanges();
             return RedirectToAction("Index");
         }
 

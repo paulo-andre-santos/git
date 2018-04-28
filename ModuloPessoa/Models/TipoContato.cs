@@ -17,14 +17,17 @@ namespace ModuloPessoa
 
         [Key]
         [Column("TipoContato")]
+        [Display(Name = "Tipo Contato")]
         public int TipoContato1 { get; set; }
 
         [Required]
         [StringLength(50)]
         public string Nome { get; set; }
 
+        [ScaffoldColumn(false)]
         public DateTime DataModificacao { get; set; }
 
+        [Display(Name = "Contatos Entidade de Negócio")]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContatoEntidadeDeNegocio> ContatoEntidadeDeNegocio { get; set; }
 

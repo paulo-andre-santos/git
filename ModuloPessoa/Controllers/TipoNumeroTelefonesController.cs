@@ -48,7 +48,7 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TipoNumeroTelefoneID,Nome,DataModificacao")] TipoNumeroTelefone tipoNumeroTelefone)
+        public ActionResult Create([Bind(Include = "TipoNumeroTelefoneID,Nome")] TipoNumeroTelefone tipoNumeroTelefone)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TipoNumeroTelefoneID,Nome,DataModificacao")] TipoNumeroTelefone tipoNumeroTelefone)
+        public ActionResult Edit([Bind(Include = "TipoNumeroTelefoneID,Nome")] TipoNumeroTelefone tipoNumeroTelefone)
         {
             if (ModelState.IsValid)
             {

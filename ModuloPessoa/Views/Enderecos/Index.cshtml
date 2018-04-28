@@ -33,12 +33,6 @@
                 @Html.DisplayNameFor(model => model.CodigoPostal)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LocalEspacial)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.rowguid)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.DataModificacao)
             </th>
             <th></th>
@@ -62,18 +56,12 @@
                 @Html.DisplayFor(modelItem => item.CodigoPostal)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LocalEspacial)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.rowguid)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.DataModificacao)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.EnderecoID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.EnderecoID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.EnderecoID })
+                @Html.ActionLink("Edit", "Edit", new { id = item.EnderecoID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EnderecoID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EnderecoID })
             </td>
         </tr>
     }

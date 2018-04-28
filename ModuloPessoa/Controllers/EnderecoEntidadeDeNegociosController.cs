@@ -7,27 +7,29 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ModuloPessoa;
+using ModuloPessoa.Dao;
 
 namespace ModuloPessoa.Controllers
 {
     public class EnderecoEntidadeDeNegociosController : Controller
     {
         private PessoaConnection db = new PessoaConnection();
+        EnderecoEntidadeDeNegocioDao dao = new EnderecoEntidadeDeNegocioDao();
 
         // GET: EnderecoEntidadeDeNegocios
         public ActionResult Index()
         {
-            return View(db.EnderecoEntidadeDeNegocio.ToList());
+            return View(dao.Listar);
         }
 
         // GET: EnderecoEntidadeDeNegocios/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EnderecoEntidadeDeNegocio enderecoEntidadeDeNegocio = db.EnderecoEntidadeDeNegocio.Find(id);
+            EnderecoEntidadeDeNegocio enderecoEntidadeDeNegocio = dao.Buscar(id);
             if (enderecoEntidadeDeNegocio == null)
             {
                 return HttpNotFound();
@@ -46,12 +48,11 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EntidadeNegocioID,EnderecoID,TipoEnderecoID,rowguid,DataModificacao")] EnderecoEntidadeDeNegocio enderecoEntidadeDeNegocio)
+        public ActionResult Create([Bind(Include = "EntidadeNegocioID,EnderecoID,TipoEnderecoID")] EnderecoEntidadeDeNegocio enderecoEntidadeDeNegocio)
         {
             if (ModelState.IsValid)
             {
-                db.EnderecoEntidadeDeNegocio.Add(enderecoEntidadeDeNegocio);
-                db.SaveChanges();
+                bool valido = dao.Criar(enderecoEntidadeDeNegocio);
                 return RedirectToAction("Index");
             }
 
@@ -59,13 +60,13 @@ namespace ModuloPessoa.Controllers
         }
 
         // GET: EnderecoEntidadeDeNegocios/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EnderecoEntidadeDeNegocio enderecoEntidadeDeNegocio = db.EnderecoEntidadeDeNegocio.Find(id);
+            EnderecoEntidadeDeNegocio enderecoEntidadeDeNegocio = dao.Buscar(id);
             if (enderecoEntidadeDeNegocio == null)
             {
                 return HttpNotFound();
@@ -78,25 +79,24 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EntidadeNegocioID,EnderecoID,TipoEnderecoID,rowguid,DataModificacao")] EnderecoEntidadeDeNegocio enderecoEntidadeDeNegocio)
+        public ActionResult Edit([Bind(Include = "EntidadeNegocioID,EnderecoID")] EnderecoEntidadeDeNegocio enderecoEntidadeDeNegocio)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(enderecoEntidadeDeNegocio).State = EntityState.Modified;
-                db.SaveChanges();
+                bool valido = dao.Editar(enderecoEntidadeDeNegocio);
                 return RedirectToAction("Index");
             }
             return View(enderecoEntidadeDeNegocio);
         }
 
         // GET: EnderecoEntidadeDeNegocios/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EnderecoEntidadeDeNegocio enderecoEntidadeDeNegocio = db.EnderecoEntidadeDeNegocio.Find(id);
+            EnderecoEntidadeDeNegocio enderecoEntidadeDeNegocio = dao.Buscar(id);
             if (enderecoEntidadeDeNegocio == null)
             {
                 return HttpNotFound();
@@ -109,9 +109,8 @@ namespace ModuloPessoa.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            EnderecoEntidadeDeNegocio enderecoEntidadeDeNegocio = db.EnderecoEntidadeDeNegocio.Find(id);
-            db.EnderecoEntidadeDeNegocio.Remove(enderecoEntidadeDeNegocio);
-            db.SaveChanges();
+            EnderecoEntidadeDeNegocio enderecoEntidadeDeNegocio = dao.Buscar(id);
+            bool valido = dao.Deletar(enderecoEntidadeDeNegocio);
             return RedirectToAction("Index");
         }
 

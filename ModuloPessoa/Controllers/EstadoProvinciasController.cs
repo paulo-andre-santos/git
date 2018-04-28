@@ -18,7 +18,7 @@ namespace ModuloPessoa.Controllers
 
         // GET: EstadoProvincias
         public ActionResult Index()
-        {           
+        {
             return View(dao.Listar);
         }
 
@@ -49,11 +49,11 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EstadoProvinciaID,CodigoEstadoProvincia,CodigoRegiao,SomenteEstadoProvinciaFlag,Nome,rowguid,DataModificacao")] EstadoProvincia estadoProvincia)
+        public ActionResult Create([Bind(Include = "EstadoProvinciaID,CodigoEstadoProvincia,CodigoRegiao,SomenteEstadoProvinciaFlag,Nome")] EstadoProvincia estadoProvincia)
         {
             if (ModelState.IsValid)
             {
-                bool valido = dao.Criar(estadoProvincia);          
+                bool valido = dao.Criar(estadoProvincia);
                 return RedirectToAction("Index");
             }
 
@@ -86,7 +86,7 @@ namespace ModuloPessoa.Controllers
         {
             if (ModelState.IsValid)
             {
-                dao.Editar(estadoProvincia);
+                bool valido = dao.Editar(estadoProvincia);
                 return RedirectToAction("Index");
             }
             ViewBag.CodigoRegiao = new SelectList(db.Regiao, "CodigoRegiao", "Nome", estadoProvincia.CodigoRegiao);
@@ -114,7 +114,7 @@ namespace ModuloPessoa.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             EstadoProvincia estadoProvincia = dao.Buscar(id);
-            bool valido = dao.Deletar(estadoProvincia);
+            dao.Deletar(estadoProvincia);
             return RedirectToAction("Index");
         }
 

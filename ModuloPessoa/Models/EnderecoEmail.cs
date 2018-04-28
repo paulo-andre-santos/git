@@ -12,19 +12,24 @@ namespace ModuloPessoa
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Display(Name = "Entidade de Negócio")]
         public int EntidadeDeNegocioID { get; set; }
 
         [Key]
         [Column(Order = 1)]
+        [Display(Name = "Id Endereço de Email")]
         public int EnderecoEmailID { get; set; }
 
         [StringLength(50)]
         public string Email { get; set; }
 
+       [ScaffoldColumn(false)]
         public Guid rowguid { get; set; }
 
+        [ScaffoldColumn(false)]
         public DateTime DataModificacao { get; set; }
 
+        [Display(Name = "Identificação de Pessoa")]
         public virtual Pessoa Pessoa { get; set; }
 
         public EnderecoEmail() {

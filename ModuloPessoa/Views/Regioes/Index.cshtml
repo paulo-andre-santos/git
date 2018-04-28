@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ModuloPessoa.TipoEndereco>
+﻿@model IEnumerable<ModuloPessoa.Regiao>
 
 @{
     Layout = null;
@@ -29,9 +29,9 @@
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.TipoEnderecoID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.TipoEnderecoID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.TipoEnderecoID })
+                @Html.ActionLink("Edit", "Edit", new { id=item.CodigoRegiao }) |
+                @Html.ActionLink("Details", "Details", new { id=item.CodigoRegiao }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.CodigoRegiao })
             </td>
         </tr>
     }

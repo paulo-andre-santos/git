@@ -18,7 +18,7 @@ namespace ModuloPessoa.Controllers
 
         // GET: Senhas
         public ActionResult Index()
-        {           
+        {
             return View(dao.Listar);
         }
 
@@ -49,11 +49,13 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EntidadeDeNegocioID,SenhaHash,SenhaSalt,rowguid,DataModificacao")] Senha senha)
+        public ActionResult Create([Bind(Include = "EntidadeDeNegocioID,SenhaHash,SenhaSalt")] Senha senha)
         {
             if (ModelState.IsValid)
             {
                 bool valido = dao.Criar(senha);
+                db.Senha.Add(senha);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -62,7 +64,7 @@ namespace ModuloPessoa.Controllers
         }
 
         // GET: Senhas/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
@@ -82,7 +84,7 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EntidadeDeNegocioID,SenhaHash,SenhaSalt,rowguid,DataModificacao")] Senha senha)
+        public ActionResult Edit([Bind(Include = "EntidadeDeNegocioID,SenhaHash,SenhaSalt")] Senha senha)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +116,7 @@ namespace ModuloPessoa.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Senha senha = dao.Buscar(id);
-            dao.Deletar(senha);
+            bool valido = dao.Criar(senha);
             return RedirectToAction("Index");
         }
 

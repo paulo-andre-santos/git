@@ -15,12 +15,14 @@ namespace ModuloPessoa
             TelefonePessoa = new HashSet<TelefonePessoa>();
         }
 
+        [Display(Name = "Tipo Número do Telefone")]
         public int TipoNumeroTelefoneID { get; set; }
 
         [Required]
         [StringLength(50)]
         public string Nome { get; set; }
 
+        [ScaffoldColumn(false)]
         public DateTime DataModificacao { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

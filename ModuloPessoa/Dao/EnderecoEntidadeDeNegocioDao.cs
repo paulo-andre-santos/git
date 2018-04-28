@@ -6,13 +6,13 @@ using System.Web;
 
 namespace ModuloPessoa.Dao
 {
-    public class EnderecoEntidadeDeNegocioDao : ICRUD<EnderecoEntidadeDeNegocio, string>
+    public class EnderecoEntidadeDeNegocioDao : ICRUD<EnderecoEntidadeDeNegocio, int>
     {
         private PessoaConnection db = new PessoaConnection();
 
         public List<EnderecoEntidadeDeNegocio> Listar => db.EnderecoEntidadeDeNegocio.ToList();
 
-        public EnderecoEntidadeDeNegocio Buscar(string id) => db.EnderecoEntidadeDeNegocio.Find(id);
+        public EnderecoEntidadeDeNegocio Buscar(int id) => db.EnderecoEntidadeDeNegocio.Find(id);
 
         public bool Criar(EnderecoEntidadeDeNegocio obj)
         {

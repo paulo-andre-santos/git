@@ -53,12 +53,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Demografia)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.rowguid)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataModificacao)
-            </th>
             <th></th>
         </tr>
     
@@ -99,12 +93,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Demografia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.rowguid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataModificacao)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.EntidadeDeNegocioID }) |

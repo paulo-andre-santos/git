@@ -18,7 +18,7 @@ namespace ModuloPessoa.Controllers
 
         // GET: EntidadeDeNegocios
         public ActionResult Index()
-        {            
+        {
             return View(dao.Listar);
         }
 
@@ -49,7 +49,7 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EntidadeDeNegocioID,rowguid,DataModificacao")] EntidadeDeNegocio entidadeDeNegocio)
+        public ActionResult Create([Bind(Include = "EntidadeDeNegocioID")] EntidadeDeNegocio entidadeDeNegocio)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EntidadeDeNegocioID,rowguid,DataModificacao")] EntidadeDeNegocio entidadeDeNegocio)
+        public ActionResult Edit([Bind(Include = "EntidadeDeNegocioID")] EntidadeDeNegocio entidadeDeNegocio)
         {
             if (ModelState.IsValid)
             {

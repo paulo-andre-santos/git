@@ -12,7 +12,9 @@ namespace ModuloPessoa.Dao
 
         public List<TelefonePessoa> Listar => db.TelefonePessoa.Include("Pessoa").Include("TipoNumeroTelefone").ToList();
 
-        public TelefonePessoa Buscar(int id) => db.TelefonePessoa.Find(id);
+        public TelefonePessoa Buscar(int id) {
+            return db.TelefonePessoa.FirstOrDefault( x=> x.EntidadeDeNegocioID.Equals(id));
+        }
 
         public bool Criar(TelefonePessoa obj)
         {

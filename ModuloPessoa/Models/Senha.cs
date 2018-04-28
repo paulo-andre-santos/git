@@ -15,14 +15,18 @@ namespace ModuloPessoa
 
         [Required]
         [StringLength(128)]
+        [Display(Name = "Senha Hash")]
         public string SenhaHash { get; set; }
 
         [Required]
         [StringLength(10)]
+        [Display(Name = "Senha Salt")]
         public string SenhaSalt { get; set; }
 
+        [ScaffoldColumn(false)]
         public Guid rowguid { get; set; }
 
+        [ScaffoldColumn(false)]
         public DateTime DataModificacao { get; set; }
 
         public virtual Pessoa Pessoa { get; set; }

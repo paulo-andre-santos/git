@@ -18,7 +18,7 @@ namespace ModuloPessoa.Controllers
 
         // GET: Pessoas
         public ActionResult Index()
-        {            
+        {
             return View(dao.Listar);
         }
 
@@ -50,11 +50,11 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EntidadeDeNegocioID,TipoPessoa,EstiloNome,Titulo,PrimeiroNome,NomeDoMeio,UltimoNome,Sufixo,EmailPromocional,InfoContatoAdicional,Demografia,rowguid,DataModificacao")] Pessoa pessoa)
+        public ActionResult Create([Bind(Include = "EntidadeDeNegocioID,TipoPessoa,EstiloNome,Titulo,PrimeiroNome,NomeDoMeio,UltimoNome,Sufixo,EmailPromocional,InfoContatoAdicional,Demografia")] Pessoa pessoa)
         {
             if (ModelState.IsValid)
             {
-                bool valido = dao.Buscar(pessoa);      
+                dao.Criar(pessoa);
                 return RedirectToAction("Index");
             }
 
@@ -85,7 +85,7 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EntidadeDeNegocioID,TipoPessoa,EstiloNome,Titulo,PrimeiroNome,NomeDoMeio,UltimoNome,Sufixo,EmailPromocional,InfoContatoAdicional,Demografia,rowguid,DataModificacao")] Pessoa pessoa)
+        public ActionResult Edit([Bind(Include = "EntidadeDeNegocioID,TipoPessoa,EstiloNome,Titulo,PrimeiroNome,NomeDoMeio,UltimoNome,Sufixo,EmailPromocional,InfoContatoAdicional,Demografia")] Pessoa pessoa)
         {
             if (ModelState.IsValid)
             {
@@ -118,7 +118,7 @@ namespace ModuloPessoa.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Pessoa pessoa = dao.Buscar(id);
-            dao.Deletar(pessoa);
+            bool valido = dao.Deletar(pessoa);
             return RedirectToAction("Index");
         }
 

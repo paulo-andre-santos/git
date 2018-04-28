@@ -15,10 +15,13 @@ namespace ModuloPessoa
             ContatoEntidadeDeNegocio = new HashSet<ContatoEntidadeDeNegocio>();
         }
 
+        [Display(Name = "Entidade de Negócio ID")]
         public int EntidadeDeNegocioID { get; set; }
 
+        [ScaffoldColumn(false)]
         public Guid rowguid { get; set; }
 
+        [ScaffoldColumn(false)]
         public DateTime DataModificacao { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

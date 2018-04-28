@@ -17,6 +17,7 @@ namespace ModuloPessoa
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Display(Name = "Pessoa ID")]
         public int PessoaID { get; set; }
 
         [Key]
@@ -24,14 +25,18 @@ namespace ModuloPessoa
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int TipoContatoID { get; set; }
 
+        [ScaffoldColumn(false)]
         public Guid rowguid { get; set; }
 
+        [ScaffoldColumn(false)]
         public DateTime DataModificacao { get; set; }
 
+        [Display(Name = "Entidade de Negócio")]
         public virtual EntidadeDeNegocio EntidadeDeNegocio { get; set; }
 
         public virtual Pessoa Pessoa { get; set; }
 
+        [Display(Name = "Tipo do Contato")]
         public virtual TipoContato TipoContato { get; set; }
 
         public ContatoEntidadeDeNegocio() {

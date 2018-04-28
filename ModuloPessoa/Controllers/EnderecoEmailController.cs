@@ -7,28 +7,29 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ModuloPessoa;
+using ModuloPessoa.Dao;
 
 namespace ModuloPessoa.Controllers
 {
-    public class EnderecoEmailsController : Controller
+    public class EnderecoEmailController : Controller
     {
         private PessoaConnection db = new PessoaConnection();
+        EnderecoEmailDao dao = new EnderecoEmailDao();
 
-        // GET: EnderecoEmails
+        // GET: EnderecoEmail
         public ActionResult Index()
         {
-            var enderecoEmail = db.EnderecoEmail.Include(e => e.Pessoa);
-            return View(enderecoEmail.ToList());
+            return View(dao.Listar);
         }
 
-        // GET: EnderecoEmails/Details/5
-        public ActionResult Details(int? id)
+        // GET: EnderecoEmail/Details/5
+        public ActionResult Details(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EnderecoEmail enderecoEmail = db.EnderecoEmail.Find(id);
+            EnderecoEmail enderecoEmail = dao.Buscar(id);
             if (enderecoEmail == null)
             {
                 return HttpNotFound();
@@ -36,24 +37,23 @@ namespace ModuloPessoa.Controllers
             return View(enderecoEmail);
         }
 
-        // GET: EnderecoEmails/Create
+        // GET: EnderecoEmail/Create
         public ActionResult Create()
         {
             ViewBag.EntidadeDeNegocioID = new SelectList(db.Pessoa, "EntidadeDeNegocioID", "TipoPessoa");
             return View();
         }
 
-        // POST: EnderecoEmails/Create
+        // POST: EnderecoEmail/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EntidadeDeNegocioID,EnderecoEmailID,Email,rowguid,DataModificacao")] EnderecoEmail enderecoEmail)
+        public ActionResult Create([Bind(Include = "EntidadeDeNegocioID,EnderecoEmailID,Email")] EnderecoEmail enderecoEmail)
         {
             if (ModelState.IsValid)
             {
-                db.EnderecoEmail.Add(enderecoEmail);
-                db.SaveChanges();
+                bool valido = dao.Criar(enderecoEmail);
                 return RedirectToAction("Index");
             }
 
@@ -61,14 +61,14 @@ namespace ModuloPessoa.Controllers
             return View(enderecoEmail);
         }
 
-        // GET: EnderecoEmails/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: EnderecoEmail/Edit/5
+        public ActionResult Edit(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EnderecoEmail enderecoEmail = db.EnderecoEmail.Find(id);
+            EnderecoEmail enderecoEmail = dao.Buscar(id);
             if (enderecoEmail == null)
             {
                 return HttpNotFound();
@@ -77,31 +77,30 @@ namespace ModuloPessoa.Controllers
             return View(enderecoEmail);
         }
 
-        // POST: EnderecoEmails/Edit/5
+        // POST: EnderecoEmail/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EntidadeDeNegocioID,EnderecoEmailID,Email,rowguid,DataModificacao")] EnderecoEmail enderecoEmail)
+        public ActionResult Edit([Bind(Include = "EntidadeDeNegocioID,EnderecoEmailID,Email")] EnderecoEmail enderecoEmail)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(enderecoEmail).State = EntityState.Modified;
-                db.SaveChanges();
+                bool valido = dao.Editar(enderecoEmail);
                 return RedirectToAction("Index");
             }
             ViewBag.EntidadeDeNegocioID = new SelectList(db.Pessoa, "EntidadeDeNegocioID", "TipoPessoa", enderecoEmail.EntidadeDeNegocioID);
             return View(enderecoEmail);
         }
 
-        // GET: EnderecoEmails/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: EnderecoEmail/Delete/5
+        public ActionResult Delete(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EnderecoEmail enderecoEmail = db.EnderecoEmail.Find(id);
+            EnderecoEmail enderecoEmail = dao.Buscar(id);
             if (enderecoEmail == null)
             {
                 return HttpNotFound();
@@ -109,14 +108,13 @@ namespace ModuloPessoa.Controllers
             return View(enderecoEmail);
         }
 
-        // POST: EnderecoEmails/Delete/5
+        // POST: EnderecoEmail/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
-            EnderecoEmail enderecoEmail = db.EnderecoEmail.Find(id);
-            db.EnderecoEmail.Remove(enderecoEmail);
-            db.SaveChanges();
+            EnderecoEmail enderecoEmail = dao.Buscar(id);
+            bool valido = dao.Deletar(enderecoEmail);
             return RedirectToAction("Index");
         }
 

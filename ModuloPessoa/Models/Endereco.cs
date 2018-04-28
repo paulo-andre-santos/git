@@ -13,27 +13,35 @@ namespace ModuloPessoa
 
         [Required]
         [StringLength(60)]
+        [Display(Name = "Primeiro Endereço")]
         public string Endereco1 { get; set; }
 
         [StringLength(60)]
+        [Display(Name = "Segundo Endereço")]
         public string Endereco2 { get; set; }
 
         [Required]
         [StringLength(30)]
         public string Cidade { get; set; }
 
+        [Display(Name = "Província ID")]
         public int EstadoProvinciaID { get; set; }
 
         [Required]
         [StringLength(15)]
+        [Display(Name = "Código Postal")]
         public string CodigoPostal { get; set; }
 
+        [Display(Name = "Local Geográfico")]
         public DbGeography LocalEspacial { get; set; }
 
+        [ScaffoldColumn(false)]
         public Guid rowguid { get; set; }
 
+        [ScaffoldColumn(false)]
         public DateTime DataModificacao { get; set; }
 
+        [Display(Name = "Província")]
         public virtual EstadoProvincia EstadoProvincia { get; set; }
 
         public Endereco() {

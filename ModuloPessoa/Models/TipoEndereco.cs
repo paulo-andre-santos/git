@@ -9,14 +9,17 @@ namespace ModuloPessoa
     [Table("Pessoa.TipoEndereco")]
     public partial class TipoEndereco
     {
+        [Display(Name = "Tipo do Endereço ID")]
         public int TipoEnderecoID { get; set; }
 
         [Required]
         [StringLength(50)]
         public string Nome { get; set; }
 
+        [ScaffoldColumn(false)]
         public Guid rowguid { get; set; }
 
+        [ScaffoldColumn(false)]
         public DateTime DataModificacao { get; set; }
 
         public TipoEndereco()

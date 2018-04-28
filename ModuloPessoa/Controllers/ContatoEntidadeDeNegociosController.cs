@@ -17,12 +17,12 @@ namespace ModuloPessoa.Controllers
 
         // GET: ContatoEntidadeDeNegocios
         public ActionResult Index()
-        {            
+        {
             return View(dao.Listar);
         }
 
         // GET: ContatoEntidadeDeNegocios/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
             if (id == null)
             {
@@ -65,7 +65,7 @@ namespace ModuloPessoa.Controllers
         }
 
         // GET: ContatoEntidadeDeNegocios/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
             if (id == null)
             {
@@ -101,7 +101,7 @@ namespace ModuloPessoa.Controllers
         }
 
         // GET: ContatoEntidadeDeNegocios/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
             if (id == null)
             {
@@ -118,7 +118,7 @@ namespace ModuloPessoa.Controllers
         // POST: ContatoEntidadeDeNegocios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
             ContatoEntidadeDeNegocio contatoEntidadeDeNegocio = dao.Buscar(id);
             bool valido = dao.Deletar(contatoEntidadeDeNegocio);

@@ -17,15 +17,19 @@ namespace ModuloPessoa
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Display(Name = "Endereço ID")]
         public int EnderecoID { get; set; }
 
         [Key]
         [Column(Order = 2)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Display(Name = "Tipo de Endereço ID")]
         public int TipoEnderecoID { get; set; }
 
+        [ScaffoldColumn(false)]
         public Guid rowguid { get; set; }
 
+        [ScaffoldColumn(false)]
         public DateTime DataModificacao { get; set; }
 
         public EnderecoEntidadeDeNegocio() {

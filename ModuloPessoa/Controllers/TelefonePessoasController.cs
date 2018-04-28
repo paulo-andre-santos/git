@@ -18,7 +18,7 @@ namespace ModuloPessoa.Controllers
 
         // GET: TelefonePessoas
         public ActionResult Index()
-        {            
+        {
             return View(dao.Listar);
         }
 
@@ -50,11 +50,11 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EntidadeDeNegocioID,NumeroTelefone,TipoNumeroTelefoneID,DataModificacao")] TelefonePessoa telefonePessoa)
+        public ActionResult Create([Bind(Include = "EntidadeDeNegocioID,NumeroTelefone,TipoNumeroTelefoneID")] TelefonePessoa telefonePessoa)
         {
             if (ModelState.IsValid)
             {
-                dao.Criar(telefonePessoa);
+                bool valido = dao.Criar(telefonePessoa);        
                 return RedirectToAction("Index");
             }
 
@@ -85,7 +85,7 @@ namespace ModuloPessoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EntidadeDeNegocioID,NumeroTelefone,TipoNumeroTelefoneID,DataModificacao")] TelefonePessoa telefonePessoa)
+        public ActionResult Edit([Bind(Include = "EntidadeDeNegocioID,NumeroTelefone,TipoNumeroTelefoneID")] TelefonePessoa telefonePessoa)
         {
             if (ModelState.IsValid)
             {
@@ -118,7 +118,7 @@ namespace ModuloPessoa.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             TelefonePessoa telefonePessoa = dao.Buscar(id);
-            dao.Deletar(telefonePessoa);
+            bool valido = dao.Deletar(telefonePessoa);
             return RedirectToAction("Index");
         }
 

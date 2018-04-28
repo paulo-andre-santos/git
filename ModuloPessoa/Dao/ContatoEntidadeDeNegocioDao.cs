@@ -7,13 +7,16 @@ using System.Web;
 
 namespace ModuloPessoa.Controllers
 {
-    public class ContatoEntidadeDeNegocioDao : ICRUD<ContatoEntidadeDeNegocio, int>
+    public class ContatoEntidadeDeNegocioDao : ICRUD<ContatoEntidadeDeNegocio, Guid>
     {
         private PessoaConnection db = Singleton.Instance.Context;
 
         public List<ContatoEntidadeDeNegocio> Listar => db.ContatoEntidadeDeNegocio.Include("EntidadeDeNegocio").Include("Pessoa").Include("TipoContato").ToList();
 
-        public ContatoEntidadeDeNegocio Buscar(int id) => db.ContatoEntidadeDeNegocio.Find(id);
+        public ContatoEntidadeDeNegocio Buscar(Guid id) {
+            return db.ContatoEntidadeDeNegocio.FirstOrDefault(x => x.rowguid.Equals(id));
+        } 
+
 
         public bool Criar(ContatoEntidadeDeNegocio obj)
         {
@@ -40,7 +43,7 @@ namespace ModuloPessoa.Controllers
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return false;
             }
@@ -54,7 +57,7 @@ namespace ModuloPessoa.Controllers
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return false;
             }

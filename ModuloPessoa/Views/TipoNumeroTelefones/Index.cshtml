@@ -20,9 +20,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataModificacao)
-            </th>
             <th></th>
         </tr>
     
@@ -30,9 +27,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataModificacao)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.TipoNumeroTelefoneID }) |

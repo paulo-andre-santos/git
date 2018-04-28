@@ -6,11 +6,14 @@ using System.Web;
 
 namespace ModuloPessoa.Dao
 {
-    public class EnderecoEmailDao : ICRUD<EnderecoEmail, int>
+    public class EnderecoEmailDao : ICRUD<EnderecoEmail, Guid>
     {
-        private PessoaConnection db = Singleton.Instance.Context;
+        private PessoaConnection db = new PessoaConnection();
 
-        public EnderecoEmail Buscar(int id) => db.EnderecoEmail.Find(id);
+        public EnderecoEmail Buscar(Guid id)
+        {
+             return db.EnderecoEmail.FirstOrDefault(x => x.rowguid.Equals(id));
+        }
 
         public bool Criar(EnderecoEmail obj)
         {
@@ -58,6 +61,6 @@ namespace ModuloPessoa.Dao
 
         }
 
-        public List<EnderecoEmail> Listar => db.EnderecoEmail.ToList();
+        public List<EnderecoEmail> Listar => db.EnderecoEmail.Include("Pessoa").ToList();
     }
 }

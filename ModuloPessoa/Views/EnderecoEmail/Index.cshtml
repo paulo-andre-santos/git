@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ModuloPessoa.Regiao>
+﻿@model IEnumerable<ModuloPessoa.EnderecoEmail>
 
 @{
     Layout = null;
@@ -18,10 +18,10 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                @Html.DisplayNameFor(model => model.Pessoa.TipoPessoa)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DataModificacao)
+                @Html.DisplayNameFor(model => model.Email)
             </th>
             <th></th>
         </tr>
@@ -29,15 +29,15 @@
     @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Nome)
+                @Html.DisplayFor(modelItem => item.Pessoa.TipoPessoa)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DataModificacao)
+                @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.CodigoRegiao }) |
-                @Html.ActionLink("Details", "Details", new { id=item.CodigoRegiao }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.CodigoRegiao })
+                @Html.ActionLink("Edit", "Edit", new {  id=item.rowguid }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.rowguid }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.rowguid })
             </td>
         </tr>
     }
