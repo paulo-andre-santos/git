@@ -23,6 +23,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.TipoNumeroTelefone.Nome)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataModificacao)
+            </th>
             <th></th>
         </tr>
     
@@ -35,9 +38,12 @@
                 @Html.DisplayFor(modelItem => item.TipoNumeroTelefone.Nome)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.EntidadeDeNegocioID  }) |
-                @Html.ActionLink("Details", "Details", new {  id=item.EntidadeDeNegocioID }) |
-                @Html.ActionLink("Delete", "Delete", new {  id=item.EntidadeDeNegocioID })
+                @Html.DisplayFor(modelItem => item.DataModificacao)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EntidadeDeNegocioID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EntidadeDeNegocioID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EntidadeDeNegocioID })
             </td>
         </tr>
     }
